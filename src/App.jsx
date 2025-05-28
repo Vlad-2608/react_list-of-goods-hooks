@@ -55,13 +55,24 @@ import './App.scss';
 import { useState } from 'react';
 import classNames from 'classnames';
 
-export const goodsFromServer = ['Dumplings', 'Garlic'];
+export const goodsFromServer = [
+  'Dumplings',
+  'Garlic',
+  'Carrot',
+  'Eggs',
+  'Ice cream',
+  'Apple',
+  'Bread',
+  'Fish',
+  'Honey',
+  'Jam',
+];
 
 const SORT_BY_ALPHABET = 'alphabet';
 const SORT_BY_LENGTH = 'length';
 
 export const App = () => {
-  const [sortFiled, setSortFiled] = useState('');
+  const [sortField, setSortFiled] = useState('');
   const [reverseField, setReverseFiled] = useState(false);
   const visibleGoods = [...goodsFromServer].sort((good1, good2) => {
     switch (sortFiled) {
@@ -91,7 +102,7 @@ export const App = () => {
           onClick={() => setSortFiled(SORT_BY_ALPHABET)}
           type="button"
           className={classNames('button', 'is-info', {
-            'is-light': sortFiled !== SORT_BY_ALPHABET,
+            'is-light': sortField !== SORT_BY_ALPHABET,
           })}
         >
           Sort alphabetically
@@ -101,7 +112,7 @@ export const App = () => {
           onClick={() => setSortFiled(SORT_BY_LENGTH)}
           type="button"
           className={classNames('button', 'is-success', {
-            'is-light': sortFiled !== SORT_BY_LENGTH,
+            'is-light': sortField !== SORT_BY_LENGTH,
           })}
         >
           Sort by length
@@ -117,7 +128,7 @@ export const App = () => {
           Reverse
         </button>
 
-        {(sortFiled || reverseField) && (
+        {(sortField || reverseField) && (
           <button
             onClick={reset}
             type="button"
