@@ -72,8 +72,8 @@ const SORT_BY_ALPHABET = 'alphabet';
 const SORT_BY_LENGTH = 'length';
 
 export const App = () => {
-  const [sortField, setSortFiled] = useState('');
-  const [reverseField, setReverseFiled] = useState(false);
+  const [sortField, setSortField] = useState('');
+  const [reverseField, setReverseField] = useState(false);
   const visibleGoods = [...goodsFromServer].sort((good1, good2) => {
     switch (sortFiled) {
       case SORT_BY_ALPHABET:
@@ -90,8 +90,8 @@ export const App = () => {
   }
 
   const reset = () => {
-    setSortFiled('');
-    setReverseFiled(false);
+    setSortField('');
+    setReverseField(false);
   };
 
   return (
@@ -99,7 +99,7 @@ export const App = () => {
     <div className="section content">
       <div className="buttons">
         <button
-          onClick={() => setSortFiled(SORT_BY_ALPHABET)}
+          onClick={() => setSortField(SORT_BY_ALPHABET)}
           type="button"
           className={classNames('button', 'is-info', {
             'is-light': sortField !== SORT_BY_ALPHABET,
@@ -109,7 +109,7 @@ export const App = () => {
         </button>
 
         <button
-          onClick={() => setSortFiled(SORT_BY_LENGTH)}
+          onClick={() => setSortField(SORT_BY_LENGTH)}
           type="button"
           className={classNames('button', 'is-success', {
             'is-light': sortField !== SORT_BY_LENGTH,
@@ -119,7 +119,7 @@ export const App = () => {
         </button>
 
         <button
-          onClick={() => setReverseFiled(!reverseField)}
+          onClick={() => setReverseField(!reverseField)}
           type="button"
           className={classNames('button', 'is-warning', {
             'is-light': !reverseField,
